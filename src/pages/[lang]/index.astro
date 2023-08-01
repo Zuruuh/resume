@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const skills = await getCollection('skills');
+const projects = await getCollection('projects', ({ id }) => id.startsWith(`${lang}/`));
+
+export async function getStaticPaths() {
+    return [
+        { params: { lang: 'fr' } },
+        { params: { lang: 'en' } }
+    ]
+}
+---
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{t('title')}</title>
+  </head>
+  <body>
+    {/* Add little button in top right corner to switch language */}
+    <aside>
+        <img src="/images/profile_picture.jpeg" alt="Younès Ziadi" />
+        <section id="contact">
+            <h3>{t('contact_me')}</h3>
+            <ul>
+                <li>
+                    <img src="/images/github.svg" alt="Github username" />
+                    <a href="https://github.com/Zuruuh">Zuruuh</a>
+                </li>
+            </ul>
+        </section>
+        <section id="skills">
+            <h3>{t('skills')}</h3>
+            <ul>
+            {skills.map(({data: skill}) => (
+                <li>
+                    <img src={`/images/${skill.icon}`} alt={`${skill.name} logo`} />
+                    <span>{skill.name}</span>
+                </li>
+            ))}
+            </ul>
+        </section>
+    </aside>
+    <h1>Younès Ziadi</h1>
+    <hr />
+    <h2>{t('position')}</h2>
+    <section id="personnal-projects">
+        <h4>{t('personnal_projects')}</h4>
+        <ul>
+        {projects.map(({data: project}) => (
+            <li>
+                <a href={project.repository}><h5>{project.title}</h5></a>
+                <ul>{project.stack.map(tool => (<li>{tool}</li>))}</ul>
+                <ul>{project.tasks.map(task => (<li>{task}</li>))}</ul>
+            </li>
+        ))}
+        </ul>
+    </section>
+  </body>
+</html>

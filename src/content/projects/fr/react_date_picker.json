@@ -1,0 +1,11 @@
+{
+  "title": "React date picker",
+  "description": "Une librairie de date-picker headless, compatible avec React & React native",
+  "stack": ["React", "Typescript"],
+  "tasks": [
+    "Gère la génération des calendriers",
+    "Couvre la majorité des cas d'usages",
+    "Délègues toute la partie présentation au développeur"
+  ],
+  "repository": "https://github.com/Zuruuh/react-date-picker"
+}
