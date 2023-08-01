@@ -1,4 +1,5 @@
 {
   "name": "Docker",
-  "icon": "docker.svg"
+  "icon": "../../assets/icons/docker.svg",
+  "index": 2
 }

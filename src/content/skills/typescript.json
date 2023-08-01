@@ -1,4 +1,5 @@
 {
   "name": "Typescript",
-  "icon": "typescript.svg"
+  "icon": "../../assets/icons/typescript.svg",
+  "index": 4
 }

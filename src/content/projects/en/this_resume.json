@@ -3,7 +3,6 @@
   "stack": ["Astro", "Typescript", "TailwindCSS", "Github Actions"],
   "tasks": [
     "Manage multilingual content",
-    "Créer un build statique optimisé et 100% html",
     "Create an optimised static build with 0 javascript",
     "Automate the generation of a pdf artifact on push"
   ],

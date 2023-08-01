@@ -1,4 +1,5 @@
 {
   "name": "Rust",
-  "icon": "rust.svg"
+  "icon": "../../assets/icons/rust.svg",
+  "index": 6
 }

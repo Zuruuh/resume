@@ -1,0 +1,10 @@
+{
+  "organization": "Openclassrooms",
+  "label": "Symfony developer",
+  "start_date": "2021-03-01",
+  "end_date": "2022-01-01",
+  "tasks": [
+    "Learn the symfony framework and it's ecosystem",
+    "Discover docker and devops in general"
+  ]
+}

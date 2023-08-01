@@ -1,17 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import ProfilePicture from '../../assets/images/profile_picture.jpeg';
+import GithubIcon from '../../assets/icons/github.svg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const skills = await getCollection('skills');
+const skills = (await getCollection('skills')).sort((a, b) => a.data.index > b.data.index ? 1 : -1);
 const projects = await getCollection('projects', ({ id }) => id.startsWith(`${lang}/`));
 
 export async function getStaticPaths() {
     return [
         { params: { lang: 'fr' } },
-        { params: { lang: 'en' } }
+        { params: { lang: 'en' } },
     ]
 }
 ---
@@ -26,12 +28,22 @@ export async function getStaticPaths() {
   <body>
     {/* Add little button in top right corner to switch language */}
     <aside>
-        <img src="/images/profile_picture.jpeg" alt="Younès Ziadi" />
+        <img
+          src={ProfilePicture.src}
+          width={ProfilePicture.width}
+          height={ProfilePicture.height}
+          alt="Younès Ziadi"
+        />
         <section id="contact">
             <h3>{t('contact_me')}</h3>
             <ul>
                 <li>
-                    <img src="/images/github.svg" alt="Github username" />
+                    <img
+                      src={GithubIcon.src}
+                      width={GithubIcon.width}
+                      height={GithubIcon.height}
+                      alt="Github username"
+                    />
                     <a href="https://github.com/Zuruuh">Zuruuh</a>
                 </li>
             </ul>
@@ -41,7 +53,7 @@ export async function getStaticPaths() {
             <ul>
             {skills.map(({data: skill}) => (
                 <li>
-                    <img src={`/images/${skill.icon}`} alt={`${skill.name} logo`} />
+                    <img src={skill.icon.src} width={skill.icon.width} height={skill.icon.heigh} alt={`${skill.name} logo`} />
                     <span>{skill.name}</span>
                 </li>
             ))}
@@ -54,7 +66,7 @@ export async function getStaticPaths() {
     <section id="personnal-projects">
         <h4>{t('personnal_projects')}</h4>
         <ul>
-        {projects.map(({data: project}) => (
+        {projects.map(({ data: project }) => (
             <li>
                 <a href={project.repository}><h5>{project.title}</h5></a>
                 <ul>{project.stack.map(tool => (<li>{tool}</li>))}</ul>
