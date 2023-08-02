@@ -1,5 +1,5 @@
 {
   "name": "React",
-  "icon": "../../assets/icons/react.svg",
+  "icon": "~/assets/icons/react.svg",
   "index": 5
 }

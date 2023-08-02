@@ -1,0 +1,10 @@
+{
+  "organization": "Openclassrooms",
+  "label": "Développeur Typescript React",
+  "start_date": "2022-04-01",
+  "tasks": [
+    "Création d'application web avec react & redux",
+    "Type-checking sur les projects avec typescript",
+    "Synchronisation de l'état server avec redux-toolkit & redux-query"
+  ]
+}

@@ -1,5 +1,5 @@
 {
   "name": "SQL",
-  "icon": "../../assets/icons/postgresql.svg",
+  "icon": "~/assets/icons/postgresql.svg",
   "index": 3
 }

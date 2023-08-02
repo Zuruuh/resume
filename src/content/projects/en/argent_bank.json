@@ -1,0 +1,44 @@
+{
+  "title": "Argent Bank",
+  "description": "Web application with auth and server state syncing",
+  "tasks": [
+    "Manage routes authorizations (public/private)",
+    "Server-state syncing w/ client-side caching using Redux",
+    "Optimistic state updates"
+  ],
+  "repository": "https://github.com/Zuruuh/argent-bank",
+  "stack": [
+    {
+      "name": "React",
+      "icon": "~/assets/icons/react.svg"
+    },
+    {
+      "name": "React Router",
+      "icon": "~/assets/icons/react_router.svg"
+    },
+    {
+      "name": "Typescript",
+      "icon": "~/assets/icons/typescript.svg"
+    },
+    {
+      "name": "Redux",
+      "icon": "~/assets/icons/redux.svg"
+    },
+    {
+      "name": "Hookform",
+      "icon": "~/assets/icons/hookform.svg"
+    },
+    {
+      "name": "Vite",
+      "icon": "~/assets/icons/vite.svg"
+    },
+    {
+      "name": "Storybook",
+      "icon": "~/assets/icons/storybook.svg"
+    },
+    {
+      "name": "Github Actions",
+      "icon": "~/assets/icons/github_actions.svg"
+    }
+  ]
+}

@@ -12,13 +12,14 @@ export const collections = {
   }),
   projects: defineCollection({
     type: 'data',
-    schema: z.object({
-      title: z.string(),
-      description: z.string().optional(),
-      stack: z.array(z.string()),
-      tasks: z.array(z.string()),
-      repository: z.string().url(),
-    }),
+    schema: ({ image }) =>
+      z.object({
+        title: z.string(),
+        description: z.string().optional(),
+        stack: z.array(z.object({ name: z.string(), icon: image() })),
+        tasks: z.array(z.string()),
+        repository: z.string().url(),
+      }),
   }),
   educations: defineCollection({
     type: 'data',
@@ -39,7 +40,7 @@ export const collections = {
         position: z.string(),
         start_date: z.coerce.date(),
         end_date: z.coerce.date().optional(),
-        stack: z.array(z.string()),
+        stack: z.array(z.object({ name: z.string(), icon: image() })),
       }),
   }),
 };

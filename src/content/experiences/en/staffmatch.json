@@ -1,7 +1,28 @@
 {
   "name": "Staffmatch",
-  "logo": "../../../assets/icons/staffmatch.png",
+  "logo": "~/assets/icons/staffmatch.png",
   "position": "Junior symfony developper",
   "start_date": "2023-02-14",
-  "stack": ["Symfony", "MySQL", "Elasticsearch", "ActiveMQ", "Redis"]
+  "stack": [
+    {
+      "name": "Symfony",
+      "icon": "~/assets/icons/symfony.svg"
+    },
+    {
+      "name": "MySQL",
+      "icon": "~/assets/icons/mysql.svg"
+    },
+    {
+      "name": "Elasticsearch",
+      "icon": "~/assets/icons/elasticsearch.svg"
+    },
+    {
+      "name": "RabbitMQ",
+      "icon": "~/assets/icons/rabbitmq.svg"
+    },
+    {
+      "name": "Redis",
+      "icon": "~/assets/icons/redis.svg"
+    }
+  ]
 }

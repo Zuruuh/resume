@@ -1,10 +1,27 @@
 {
   "title": "Ce CV",
-  "stack": ["Astro", "Typescript", "TailwindCSS", "Github Actions"],
   "tasks": [
     "Gérer du contenu multilingue",
     "Créer un build statique optimisé et 100% html",
     "Automatiser la création d'un pdf à chaque push"
   ],
-  "repository": "https://github.com/Zuruuh/resume"
+  "repository": "https://github.com/Zuruuh/resume",
+  "stack": [
+    {
+      "name": "Astro",
+      "icon": "~/assets/icons/astro.svg"
+    },
+    {
+      "name": "Typescript",
+      "icon": "~/assets/icons/typescript.svg"
+    },
+    {
+      "name": "TailwindCSS",
+      "icon": "~/assets/icons/tailwind.svg"
+    },
+    {
+      "name": "Github Actions",
+      "icon": "~/assets/icons/github_actions.svg"
+    }
+  ]
 }

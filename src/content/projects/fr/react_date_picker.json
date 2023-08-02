@@ -1,11 +1,36 @@
 {
   "title": "React date picker",
   "description": "Une librairie de date-picker headless, compatible avec React & React native",
-  "stack": ["React", "Typescript"],
   "tasks": [
     "Gère la génération des calendriers",
     "Couvre la majorité des cas d'usages",
     "Délègues toute la partie présentation au développeur"
   ],
-  "repository": "https://github.com/Zuruuh/react-date-picker"
+  "repository": "https://github.com/Zuruuh/react-date-picker",
+  "stack": [
+    {
+      "name": "React",
+      "icon": "~/assets/icons/react.svg"
+    },
+    {
+      "name": "Typescript",
+      "icon": "~/assets/icons/typescript.svg"
+    },
+    {
+      "name": "Vite",
+      "icon": "~/assets/icons/vite.svg"
+    },
+    {
+      "name": "Storybook",
+      "icon": "~/assets/icons/storybook.svg"
+    },
+    {
+      "name": "Vitest",
+      "icon": "~/assets/icons/vitest.svg"
+    },
+    {
+      "name": "Github Actions",
+      "icon": "~/assets/icons/github_actions.svg"
+    }
+  ]
 }

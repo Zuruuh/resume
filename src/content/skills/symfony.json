@@ -1,5 +1,5 @@
 {
   "name": "Symfony",
-  "icon": "../../assets/icons/symfony.svg",
+  "icon": "~/assets/icons/symfony.svg",
   "index": 1
 }

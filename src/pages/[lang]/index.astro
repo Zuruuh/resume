@@ -1,22 +1,25 @@
 ---
 import { getCollection } from 'astro:content';
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-import ProfilePicture from '../../assets/images/profile_picture.jpeg';
-import GithubIcon from '../../assets/icons/github.svg';
+import { getLangFromUrl, useTranslations } from '~/i18n/utils';
+import ProfilePicture from '~/assets/images/profile_picture.jpeg';
+import GithubIcon from '~/assets/icons/github.svg';
+import TextListWithIcons from '~/components/text_list_with_icons.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const skills = (await getCollection('skills')).sort((a, b) => a.data.index > b.data.index ? 1 : -1);
-const projects = await getCollection('projects', ({ id }) => id.startsWith(`${lang}/`));
+const filterByLang = ({ id }: { id: string }) => id.startsWith(`${lang}/`);
+const skills = (await getCollection('skills')).sort((a, b) =>
+  a.data.index > b.data.index ? 1 : -1,
+);
+const projects = await getCollection('projects', filterByLang);
+const experiences = await getCollection('experiences', filterByLang);
 
 export async function getStaticPaths() {
-    return [
-        { params: { lang: 'fr' } },
-        { params: { lang: 'en' } },
-    ]
+  return [{ params: { lang: 'fr' } }, { params: { lang: 'en' } }];
 }
 ---
+
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
@@ -25,55 +28,102 @@ export async function getStaticPaths() {
     <meta name="generator" content={Astro.generator} />
     <title>{t('title')}</title>
   </head>
-  <body>
+  <body class="flex flex-col">
     {/* Add little button in top right corner to switch language */}
-    <aside>
-        <img
-          src={ProfilePicture.src}
-          width={ProfilePicture.width}
-          height={ProfilePicture.height}
-          alt="Younès Ziadi"
+    <aside
+      class="bg-primary text-text-tertiary flex flex-col p-8 pb-4 justify-center"
+    >
+      <h1 class="text-4xl text-center">Younès Ziadi</h1>
+      <h2 class="text-2xl text-center">{t('position')}</h2>
+      <hr class="m-4" />
+      <img
+        src={ProfilePicture.src}
+        width={ProfilePicture.width}
+        height={ProfilePicture.height}
+        alt="Younès Ziadi"
+        class="rounded-full"
+      />
+
+      <section id="contact">
+        <TextListWithIcons
+          title={t('contact_me')}
+          data={[
+            {
+              icon: GithubIcon,
+              label: 'Zuruuh',
+              alt: 'Github username',
+              link: 'https://github.com/Zuruuh',
+            },
+          ]}
         />
-        <section id="contact">
-            <h3>{t('contact_me')}</h3>
-            <ul>
-                <li>
-                    <img
-                      src={GithubIcon.src}
-                      width={GithubIcon.width}
-                      height={GithubIcon.height}
-                      alt="Github username"
-                    />
-                    <a href="https://github.com/Zuruuh">Zuruuh</a>
-                </li>
-            </ul>
-        </section>
-        <section id="skills">
-            <h3>{t('skills')}</h3>
-            <ul>
-            {skills.map(({data: skill}) => (
-                <li>
-                    <img src={skill.icon.src} width={skill.icon.width} height={skill.icon.heigh} alt={`${skill.name} logo`} />
-                    <span>{skill.name}</span>
-                </li>
-            ))}
-            </ul>
-        </section>
+      </section>
+
+      <section id="skills">
+        <TextListWithIcons
+          title={t('skills')}
+          data={skills.map(({ data: skill }) => ({
+            icon: skill.icon,
+            alt: `${skill.name} logo`,
+            label: skill.name,
+          }))}
+        />
+      </section>
     </aside>
-    <h1>Younès Ziadi</h1>
-    <hr />
-    <h2>{t('position')}</h2>
-    <section id="personnal-projects">
-        <h4>{t('personnal_projects')}</h4>
-        <ul>
-        {projects.map(({ data: project }) => (
+
+    <section id="experiences">
+      <h3>{t('experiences')}</h3>
+      <ul>
+        {
+          experiences.map(({ data: experience }) => (
             <li>
-                <a href={project.repository}><h5>{project.title}</h5></a>
-                <ul>{project.stack.map(tool => (<li>{tool}</li>))}</ul>
-                <ul>{project.tasks.map(task => (<li>{task}</li>))}</ul>
+              <div>
+                <span>{experience.name}</span>
+                <img
+                  src={experience.logo.src}
+                  width={24}
+                  height={24}
+                  alt={`${experience.name} logo`}
+                />
+              </div>
+              <span>{experience.position}</span>
+              {/* TODO: complete this */}
             </li>
-        ))}
-        </ul>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section id="personnal-projects">
+      <h4 class="text-lg">{t('personnal_projects')}</h4>
+      <ul>
+        {
+          projects.map(({ data: project }) => (
+            <li>
+              <a href={project.repository}>
+                <h5>{project.title}</h5>
+              </a>
+              <ul>
+                {project.stack.map((tool) => (
+                  <li>
+                    <img
+                      src={tool.icon.src}
+                      height={24}
+                      width={24}
+                      alt={`${tool.name} logo`}
+                    />
+                    <span>{tool.name}</span>
+                  </li>
+                ))}
+              </ul>
+              <ul>
+                {project.tasks.map((task) => (
+                  <li>{task}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ul>
     </section>
   </body>
 </html>
