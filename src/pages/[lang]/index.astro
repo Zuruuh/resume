@@ -28,8 +28,23 @@ export async function getStaticPaths() {
     <meta name="generator" content={Astro.generator} />
     <title>{t('title')}</title>
   </head>
+
   <body class="flex flex-col">
     {/* Add little button in top right corner to switch language */}
+    {
+      /*
+      add small biography 
+      add open source contributions
+      remove icons labels in personnal projects
+      less spacing everywhere
+      add phone number, linked in, email
+      recheck content order (maybe projects first ?)
+      add npm tech to react date picker project
+      combine experiences & projects blocks maybe?
+      shrink skills & make them 2 columns
+      button to download resume as pdf
+    */
+    }
     <aside
       class="bg-primary text-text-tertiary flex flex-col p-8 pb-4 justify-center"
     >
@@ -70,60 +85,84 @@ export async function getStaticPaths() {
       </section>
     </aside>
 
-    <section id="experiences">
-      <h3>{t('experiences')}</h3>
-      <ul>
-        {
-          experiences.map(({ data: experience }) => (
-            <li>
-              <div>
-                <span>{experience.name}</span>
-                <img
-                  src={experience.logo.src}
-                  width={24}
-                  height={24}
-                  alt={`${experience.name} logo`}
-                />
-              </div>
-              <span>{experience.position}</span>
-              {/* TODO: complete this */}
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+    <main class="p-2">
+      <section id="experiences" class="text-lg">
+        <h4 class="text-lg text-primary">{t('experiences')}</h4>
+        <ul>
+          {
+            experiences.map(({ data: experience }, i, { length }) => (
+              <li class:list={[{ ['pb-2']: i + 1 !== length }]}>
+                <div class="flex items-center">
+                  <img
+                    src={experience.logo.src}
+                    width={24}
+                    height={24}
+                    alt={`${experience.name} logo`}
+                  />
+                  <span class="text-lg">{experience.name}</span>
+                  <span class="text-sm ms-2 text-text-secondary">
+                    - {experience.position}
+                  </span>
+                </div>
+                <div class="p-2">
+                  <span>{t('tech_stack')}:</span>
+                  <ul>
+                    {experience.stack.map((tool) => (
+                      <li class="flex items-center">
+                        <span class="me-1">•</span>
+                        <img
+                          src={tool.icon.src}
+                          width={16}
+                          height={16}
+                          alt={`${tool.name} logo`}
+                        />
+                        <span class="text-xs ms-1">{tool.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
 
-    <section id="personnal-projects">
-      <h4 class="text-lg">{t('personnal_projects')}</h4>
-      <ul>
-        {
-          projects.map(({ data: project }) => (
-            <li>
-              <a href={project.repository}>
-                <h5>{project.title}</h5>
-              </a>
-              <ul>
-                {project.stack.map((tool) => (
-                  <li>
-                    <img
-                      src={tool.icon.src}
-                      height={24}
-                      width={24}
-                      alt={`${tool.name} logo`}
-                    />
-                    <span>{tool.name}</span>
-                  </li>
-                ))}
-              </ul>
-              <ul>
-                {project.tasks.map((task) => (
-                  <li>{task}</li>
-                ))}
-              </ul>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+      <section id="personnal-projects">
+        <h4 class="text-lg text-primary">{t('personnal_projects')}</h4>
+        <ul>
+          {
+            projects.map(({ data: project }, i, { length }) => (
+              <li class:list={[{ ['pb-4']: i + 1 !== length }]}>
+                <a href={project.repository}>{project.title}</a>
+                <div class="p-2">
+                  <span>{t('tech_stack')}:</span>
+                  <ul class="flex flex-wrap gap-x-2 gap-y-1">
+                    {project.stack.map((tool, i, { length }) => (
+                      <li class="flex items-center">
+                        <img
+                          src={tool.icon.src}
+                          width={20}
+                          height={20}
+                          alt={`${tool.name} logo`}
+                        />
+                        <span class="text-xs ms-1">
+                          {tool.name}
+                          {i + 1 === length ? '' : ','}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <ul>
+                  {project.tasks.map((task) => (
+                    <li class="text-sm text-text-secondary">- {task}</li>
+                  ))}
+                </ul>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
   </body>
 </html>

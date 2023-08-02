@@ -2,13 +2,13 @@
 import type { ImageMetadata } from 'astro';
 
 interface Props {
-    title: string,
-    data: {
-        icon: ImageMetadata,
-        alt?: string,
-        link?: string,
-        label: string,
-    }[],
+  title: string;
+  data: {
+    icon: ImageMetadata;
+    alt?: string;
+    link?: string;
+    label: string;
+  }[];
 }
 
 const { title, data } = Astro.props;
@@ -16,18 +16,23 @@ const { title, data } = Astro.props;
 
 <h3 class="text-xl text-center uppercase font-semibold my-2">{title}</h3>
 <ul class="ps-4">
-    {data.map(entry => (
-        <li class="flex items-center pt-2">
-            <img
-              src={entry.icon.src}
-              width={40}
-              height={40}
-              alt={entry.alt ?? entry.label}
-            />
-            {entry.link !== undefined
-                ? <a href={entry.link} class="ps-2 text-lg">{entry.label}</a>
-                : <span class="ps-2 text-lg">{entry.label}</span>
-            }
-        </li>
-    ))}
+  {
+    data.map((entry) => (
+      <li class="flex items-center pt-2">
+        <img
+          src={entry.icon.src}
+          width={40}
+          height={40}
+          alt={entry.alt ?? entry.label}
+        />
+        {entry.link !== undefined ? (
+          <a href={entry.link} class="ps-2 text-lg">
+            {entry.label}
+          </a>
+        ) : (
+          <span class="ps-2 text-lg">{entry.label}</span>
+        )}
+      </li>
+    ))
+  }
 </ul>
