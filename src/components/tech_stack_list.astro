@@ -1,0 +1,48 @@
+---
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  stack: {
+    name: string;
+    icon: ImageMetadata;
+  }[];
+}
+
+const { stack } = Astro.props;
+---
+
+<ul class="flex gap-2 items-center">
+  {
+    stack.map((tool) => (
+      <li
+        data-tool={tool.name}
+        class:list={[
+          'w-[24px] h-[24px] ',
+          'relative',
+          'justify-center items-center flex',
+          'before:content-[attr(data-tool)]',
+          'before:absolute before:-top-full before:left-1/2 before:-translate-x-1/2',
+          'before:invisible hover:before:visible',
+          'before:text-sm before:rounded-md',
+          'before:w-max',
+          'before:bg-white',
+          'before:px-1 before:py-0.5',
+          'before:border-black before:border',
+          'after:absolute',
+          'after:invisible hover:after:visible',
+          'after:w-2 after:h-2',
+          'after:bg-white',
+          'after:rotate-45 after:bottom-3/4',
+          'after:border-b-black after:border-r-black after:border-r after:border-b',
+        ]}
+      >
+        <img
+          src={tool.icon.src}
+          width={24}
+          height={24}
+          alt={`${tool.name} logo`}
+        />
+      </li>
+    ))
+  }
+</ul>

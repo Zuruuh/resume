@@ -1,9 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '~/i18n/utils';
+
+import TextListWithIcons from '~/components/text_list_with_icons.astro';
+import TechStackList from '~/components/tech_stack_list.astro';
+
 import ProfilePicture from '~/assets/images/profile_picture.jpeg';
 import GithubIcon from '~/assets/icons/github.svg';
-import TextListWithIcons from '~/components/text_list_with_icons.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -30,21 +33,6 @@ export async function getStaticPaths() {
   </head>
 
   <body class="flex flex-col">
-    {/* Add little button in top right corner to switch language */}
-    {
-      /*
-      add small biography 
-      add open source contributions
-      remove icons labels in personnal projects
-      less spacing everywhere
-      add phone number, linked in, email
-      recheck content order (maybe projects first ?)
-      add npm tech to react date picker project
-      combine experiences & projects blocks maybe?
-      shrink skills & make them 2 columns
-      button to download resume as pdf
-    */
-    }
     <aside
       class="bg-primary text-text-tertiary flex flex-col p-8 pb-4 justify-center"
     >
@@ -106,20 +94,7 @@ export async function getStaticPaths() {
                 </div>
                 <div class="p-2">
                   <span>{t('tech_stack')}:</span>
-                  <ul>
-                    {experience.stack.map((tool) => (
-                      <li class="flex items-center">
-                        <span class="me-1">•</span>
-                        <img
-                          src={tool.icon.src}
-                          width={16}
-                          height={16}
-                          alt={`${tool.name} logo`}
-                        />
-                        <span class="text-xs ms-1">{tool.name}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <TechStackList stack={experience.stack} />
                 </div>
               </li>
             ))
@@ -133,25 +108,18 @@ export async function getStaticPaths() {
           {
             projects.map(({ data: project }, i, { length }) => (
               <li class:list={[{ ['pb-4']: i + 1 !== length }]}>
-                <a href={project.repository}>{project.title}</a>
-                <div class="p-2">
-                  <span>{t('tech_stack')}:</span>
-                  <ul class="flex flex-wrap gap-x-2 gap-y-1">
-                    {project.stack.map((tool, i, { length }) => (
-                      <li class="flex items-center">
-                        <img
-                          src={tool.icon.src}
-                          width={20}
-                          height={20}
-                          alt={`${tool.name} logo`}
-                        />
-                        <span class="text-xs ms-1">
-                          {tool.name}
-                          {i + 1 === length ? '' : ','}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                <div class="flex items-center flex-wrap">
+                  <a href={project.repository} class="flex items-center me-2">
+                    <img
+                      src={GithubIcon.src}
+                      width={24}
+                      height={24}
+                      alt="Github"
+                      class="me-1"
+                    />
+                    {project.title}:
+                  </a>
+                  <TechStackList stack={project.stack} />
                 </div>
                 <ul>
                   {project.tasks.map((task) => (

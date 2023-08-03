@@ -1,12 +1,16 @@
 {
   "name": "Staffmatch",
-  "logo": "~/assets/icons/staffmatch.png",
+  "logo": "~/assets/icons/staffmatch.svg",
   "position": "Développeur Symfony",
   "start_date": "2023-02-14",
   "stack": [
     {
       "name": "Symfony",
       "icon": "~/assets/icons/symfony.svg"
+    },
+    {
+      "name": "Doctrine",
+      "icon": "~/assets/icons/doctrine.svg"
     },
     {
       "name": "MySQL",
@@ -23,6 +27,10 @@
     {
       "name": "Redis",
       "icon": "~/assets/icons/redis.svg"
+    },
+    {
+      "name": "PHPStan",
+      "icon": "~/assets/icons/phpstan.png"
     }
   ]
 }
