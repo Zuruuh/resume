@@ -7,6 +7,10 @@
     "Délègues toute la partie présentation au développeur"
   ],
   "repository": "https://github.com/Zuruuh/react-date-picker",
+  "link": {
+    "type": "web",
+    "url": "https://www.npmjs.com/package/@zuruuh/react-date-picker"
+  },
   "stack": [
     {
       "name": "React",

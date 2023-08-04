@@ -44,4 +44,21 @@ export const collections = {
         tasks: z.array(z.string()),
       }),
   }),
+  contributions: defineCollection({
+    type: 'data',
+    schema: ({ image }) =>
+      z.object({
+        name: z.string(),
+        repository: z.string().url(),
+        link: z.string().optional(),
+        pull_requests: z.array(z.string()),
+        tasks: z.array(z.string()),
+        stack: z.array(
+          z.object({
+            name: z.string(),
+            icon: image(),
+          }),
+        ),
+      }),
+  }),
 };

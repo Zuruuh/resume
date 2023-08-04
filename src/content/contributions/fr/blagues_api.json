@@ -1,0 +1,32 @@
+{
+  "name": "Blagues API",
+  "repository": "https://github.com/Blagues-API/blagues-api-php",
+  "link": "https://www.blagues-api.fr",
+  "pull_requests": [],
+  "tasks": [
+    "Création d'une librairie php pour intéragir avec l'api",
+    "Réutilisation un client http déjà installé sur le projet de l'utilisateur"
+  ],
+  "stack": [
+    {
+      "name": "PHP",
+      "icon": "~/assets/icons/php.svg"
+    },
+    {
+      "name": "PHPStan",
+      "icon": "~/assets/icons/phpstan.png"
+    },
+    {
+      "name": "Psalm",
+      "icon": "~/assets/icons/psalm.png"
+    },
+    {
+      "name": "HTTPlug",
+      "icon": "~/assets/icons/httplug.png"
+    },
+    {
+      "name": "Packagist",
+      "icon": "~/assets/icons/packagist.svg"
+    }
+  ]
+}

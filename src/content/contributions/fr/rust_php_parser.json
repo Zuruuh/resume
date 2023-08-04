@@ -1,0 +1,22 @@
+{
+  "name": "Rust PHP Parser",
+  "repository": "https://github.com/php-rust-tools/parser",
+  "pull_requests": ["https://github.com/php-rust-tools/parser/pull/272"],
+  "tasks": [
+    "Implémentation des fonctionnalités de php 8.3 (class constants typées, classes readonly anonymes)"
+  ],
+  "stack": [
+    {
+      "name": "Rust",
+      "icon": "~/assets/icons/rust.svg"
+    },
+    {
+      "name": "Serde JSON",
+      "icon": "~/assets/icons/serde.png"
+    },
+    {
+      "name": "Cargo Testing Api",
+      "icon": "~/assets/icons/cargo.svg"
+    }
+  ]
+}

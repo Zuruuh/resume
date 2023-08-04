@@ -6,6 +6,10 @@
     "Automate the generation of a pdf artifact on push"
   ],
   "repository": "https://github.com/Zuruuh/resume",
+  "link": {
+    "type": "web",
+    "url": "https://resume.zuruuh.vercel.app"
+  },
   "stack": [
     {
       "name": "Astro",

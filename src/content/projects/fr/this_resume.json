@@ -6,6 +6,10 @@
     "Automatiser la création d'un pdf à chaque push"
   ],
   "repository": "https://github.com/Zuruuh/resume",
+  "link": {
+    "type": "web",
+    "url": "https://resume.zuruuh.vercel.app"
+  },
   "stack": [
     {
       "name": "Astro",
