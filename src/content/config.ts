@@ -41,6 +41,7 @@ export const collections = {
         start_date: z.coerce.date(),
         end_date: z.coerce.date().optional(),
         stack: z.array(z.object({ name: z.string(), icon: image() })),
+        tasks: z.array(z.string()),
       }),
   }),
 };

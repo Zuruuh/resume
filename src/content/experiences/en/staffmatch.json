@@ -3,6 +3,11 @@
   "logo": "~/assets/icons/staffmatch.svg",
   "position": "Symfony Developper",
   "start_date": "2023-02-14",
+  "tasks": [
+    "Upgrade symfony version from 4.4 to 5.4",
+    "Setup doctrine migrations & create tooling for QA environment",
+    "Enforce PHPStan usage & typing and increase level to make it stricter"
+  ],
   "stack": [
     {
       "name": "Symfony",
@@ -31,6 +36,10 @@
     {
       "name": "PHPStan",
       "icon": "~/assets/icons/phpstan.png"
+    },
+    {
+      "name": "Docker",
+      "icon": "~/assets/icons/docker.svg"
     }
   ]
 }
