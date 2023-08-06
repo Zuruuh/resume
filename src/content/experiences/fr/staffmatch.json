@@ -6,7 +6,8 @@
   "tasks": [
     "Montée de version symfony 4.4 vers 5.4",
     "Mise en place des migrations doctrine & tooling pour l'environnement de QA",
-    "Poussé l'usage de PHPStan et montée de niveau"
+    "Poussé l'usage de PHPStan et montée de niveau",
+    "Montée de version de php 7.4 vers 8.1"
   ],
   "stack": [
     {

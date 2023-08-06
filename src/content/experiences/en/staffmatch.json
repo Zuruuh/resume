@@ -6,7 +6,8 @@
   "tasks": [
     "Upgrade symfony version from 4.4 to 5.4",
     "Setup doctrine migrations & create tooling for QA environment",
-    "Enforce PHPStan usage & typing and increase level to make it stricter"
+    "Enforce PHPStan usage & typing and increase level to make it stricter",
+    "Upgrade php version from 7.4 to 8.1"
   ],
   "stack": [
     {
