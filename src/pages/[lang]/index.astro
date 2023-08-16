@@ -3,7 +3,8 @@ import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '~/i18n/utils';
 
 import TextListWithIcons from '~/components/text_list_with_icons.astro';
-import TechStackList from '~/components/tech_stack_list.astro';
+import SectionWithTitle from '~/components/section_with_title.astro';
+import ProjectCard from '~/components/project_card.astro';
 
 import ProfilePicture from '~/assets/images/profile_picture.jpeg';
 import GithubIcon from '~/assets/icons/github.svg';
@@ -15,8 +16,10 @@ const filterByLang = ({ id }: { id: string }) => id.startsWith(`${lang}/`);
 const skills = (await getCollection('skills')).sort((a, b) =>
   a.data.index > b.data.index ? 1 : -1,
 );
+
 const projects = await getCollection('projects', filterByLang);
 const experiences = await getCollection('experiences', filterByLang);
+const contributions = await getCollection('contributions', filterByLang);
 
 export async function getStaticPaths() {
   return [{ params: { lang: 'fr' } }, { params: { lang: 'en' } }];
@@ -74,6 +77,8 @@ export async function getStaticPaths() {
     </aside>
 
     <main class="p-2">
+      {
+        /*
       <section id="experiences" class="text-lg">
         <h4 class="text-lg text-primary">{t('experiences')}</h4>
         <ul>
@@ -101,36 +106,58 @@ export async function getStaticPaths() {
           }
         </ul>
       </section>
+      */
+      }
 
-      <section id="personnal-projects">
-        <h4 class="text-lg text-primary">{t('personnal_projects')}</h4>
-        <ul>
+      <SectionWithTitle title={t('experiences')} id="experiences">
+        <ul class="pb-4">
           {
-            projects.map(({ data: project }, i, { length }) => (
+            experiences.map(({ data: experience }, i, { length }) => (
               <li class:list={[{ ['pb-4']: i + 1 !== length }]}>
-                <div class="flex items-center flex-wrap">
-                  <a href={project.repository} class="flex items-center me-2">
-                    <img
-                      src={GithubIcon.src}
-                      width={24}
-                      height={24}
-                      alt="Github"
-                      class="me-1"
-                    />
-                    {project.title}:
-                  </a>
-                  <TechStackList stack={project.stack} />
-                </div>
-                <ul>
-                  {project.tasks.map((task) => (
-                    <li class="text-sm text-text-secondary">- {task}</li>
-                  ))}
-                </ul>
+                <ProjectCard
+                  title={experience.name}
+                  job={experience.position}
+                  tasks={experience.tasks}
+                  stack={experience.stack}
+                />
               </li>
             ))
           }
         </ul>
-      </section>
+      </SectionWithTitle>
+
+      <SectionWithTitle title={t('personnal_projects')} id="personnal-projects">
+        <ul>
+          {
+            projects.map(({ data: project }, i, { length }) => (
+              <li class:list={[{ ['pb-4']: i + 1 !== length }]}>
+                <ProjectCard
+                  title={project.title}
+                  repository={project.repository}
+                  tasks={project.tasks}
+                  stack={project.stack}
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </SectionWithTitle>
+      <SectionWithTitle title={t('opensource')} id="opensource">
+        <ul>
+          {
+            contributions.map(({ data: contribution }, i, { length }) => (
+              <li class:list={[{ ['pb-4']: i + 1 !== length }]}>
+                <ProjectCard
+                  title={contribution.name}
+                  link={contribution.repository}
+                  tasks={contribution.tasks}
+                  stack={contribution.stack}
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </SectionWithTitle>
     </main>
   </body>
 </html>

@@ -15,6 +15,7 @@ export const resume = {
     experiences: 'Experiences',
     educations: 'Educations/Degrees',
     tech_stack: 'Tech stack',
+    opensource: 'Opensource contributions',
   },
   fr: {
     title: 'Mon CV',
@@ -25,5 +26,6 @@ export const resume = {
     experiences: 'Expériences',
     educations: 'Formations/Diplomes',
     tech_stack: 'Stack technique',
+    opensource: 'Contributions opensource',
   },
 } as const;
