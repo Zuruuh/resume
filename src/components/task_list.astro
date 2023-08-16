@@ -1,0 +1,11 @@
+---
+interface Props {
+  tasks: string[];
+}
+
+const { tasks } = Astro.props;
+---
+
+<ul>
+  {tasks.map((task) => <li class="text-sm text-text-secondary">- {task}</li>)}
+</ul>

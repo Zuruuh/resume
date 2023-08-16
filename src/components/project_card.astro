@@ -1,6 +1,7 @@
 ---
 import GithubIcon from '~/assets/icons/github.svg';
 import TechStackList from './tech_stack_list.astro';
+import TaskList from './task_list.astro';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -37,6 +38,4 @@ const { repository, title, stack = [], tasks = [] } = Astro.props;
   }
   <TechStackList stack={stack} />
 </div>
-<ul>
-  {tasks.map((task) => <li class="text-sm text-text-secondary">- {task}</li>)}
-</ul>
+<TaskList tasks={tasks} />

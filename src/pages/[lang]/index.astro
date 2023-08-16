@@ -5,12 +5,21 @@ import { getLangFromUrl, useTranslations } from '~/i18n/utils';
 import TextListWithIcons from '~/components/text_list_with_icons.astro';
 import SectionWithTitle from '~/components/section_with_title.astro';
 import ProjectCard from '~/components/project_card.astro';
+import TaskList from '~/components/task_list.astro';
 
 import ProfilePicture from '~/assets/images/profile_picture.jpeg';
 import GithubIcon from '~/assets/icons/github.svg';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const dateFormatter = (date: Date) => {
+  const dateString = new Intl.DateTimeFormat(lang, {
+    month: 'long',
+    year: 'numeric',
+  }).format(date);
+
+  return dateString.charAt(0).toUpperCase().concat(dateString.slice(1));
+};
 
 const filterByLang = ({ id }: { id: string }) => id.startsWith(`${lang}/`);
 const skills = (await getCollection('skills')).sort((a, b) =>
@@ -20,6 +29,7 @@ const skills = (await getCollection('skills')).sort((a, b) =>
 const projects = await getCollection('projects', filterByLang);
 const experiences = await getCollection('experiences', filterByLang);
 const contributions = await getCollection('contributions', filterByLang);
+const educations = await getCollection('educations', filterByLang);
 
 export async function getStaticPaths() {
   return [{ params: { lang: 'fr' } }, { params: { lang: 'en' } }];
@@ -37,7 +47,7 @@ export async function getStaticPaths() {
 
   <body class="flex flex-col">
     <aside
-      class="bg-primary text-text-tertiary flex flex-col p-8 pb-4 justify-center"
+      class="bg-primary text-text-tertiary flex flex-col p-8 pb-2 justify-center"
     >
       <h1 class="text-4xl text-center">Younès Ziadi</h1>
       <h2 class="text-2xl text-center">{t('position')}</h2>
@@ -77,43 +87,15 @@ export async function getStaticPaths() {
     </aside>
 
     <main class="p-2">
-      {
-        /*
-      <section id="experiences" class="text-lg">
-        <h4 class="text-lg text-primary">{t('experiences')}</h4>
+      <SectionWithTitle
+        title={t('experiences')}
+        id="experiences"
+        withPadding={false}
+      >
         <ul>
           {
             experiences.map(({ data: experience }, i, { length }) => (
               <li class:list={[{ ['pb-2']: i + 1 !== length }]}>
-                <div class="flex items-center">
-                  <img
-                    src={experience.logo.src}
-                    width={24}
-                    height={24}
-                    alt={`${experience.name} logo`}
-                  />
-                  <span class="text-lg">{experience.name}</span>
-                  <span class="text-sm ms-2 text-text-secondary">
-                    - {experience.position}
-                  </span>
-                </div>
-                <div class="p-2">
-                  <span>{t('tech_stack')}:</span>
-                  <TechStackList stack={experience.stack} />
-                </div>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-      */
-      }
-
-      <SectionWithTitle title={t('experiences')} id="experiences">
-        <ul class="pb-4">
-          {
-            experiences.map(({ data: experience }, i, { length }) => (
-              <li class:list={[{ ['pb-4']: i + 1 !== length }]}>
                 <ProjectCard
                   title={experience.name}
                   job={experience.position}
@@ -130,7 +112,7 @@ export async function getStaticPaths() {
         <ul>
           {
             projects.map(({ data: project }, i, { length }) => (
-              <li class:list={[{ ['pb-4']: i + 1 !== length }]}>
+              <li class:list={[{ ['pb-2']: i + 1 !== length }]}>
                 <ProjectCard
                   title={project.title}
                   repository={project.repository}
@@ -142,17 +124,51 @@ export async function getStaticPaths() {
           }
         </ul>
       </SectionWithTitle>
+
       <SectionWithTitle title={t('opensource')} id="opensource">
         <ul>
           {
             contributions.map(({ data: contribution }, i, { length }) => (
-              <li class:list={[{ ['pb-4']: i + 1 !== length }]}>
+              <li class:list={[{ ['pb-2']: i + 1 !== length }]}>
                 <ProjectCard
                   title={contribution.name}
-                  link={contribution.repository}
+                  repository={contribution.repository}
                   tasks={contribution.tasks}
                   stack={contribution.stack}
                 />
+              </li>
+            ))
+          }
+        </ul>
+      </SectionWithTitle>
+
+      <SectionWithTitle title={t('educations')} id="educations">
+        <ul>
+          {
+            educations.map(({ data: education }, i, { length }) => (
+              <li class:list={[{ ['pb-2']: i + 1 !== length }]}>
+                <div class="flex flex-col me-2">
+                  <div class="flex">
+                    <img
+                      src={education.logo.src}
+                      width={24}
+                      height={24}
+                      alt={education.organization}
+                    />
+                    <span>&nbsp;{education.organization}</span>
+                  </div>
+                  <div>
+                    <span>{education.label} |&nbsp;</span>
+                    <span>{dateFormatter(education.start_date)}</span>
+                    <span>&nbsp;-&nbsp;</span>
+                    <span>
+                      {education.end_date
+                        ? dateFormatter(education.end_date)
+                        : t('ongoing')}
+                    </span>
+                  </div>
+                  <TaskList tasks={education.tasks} />
+                </div>
               </li>
             ))
           }

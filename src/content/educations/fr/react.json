@@ -1,5 +1,6 @@
 {
   "organization": "Openclassrooms",
+  "logo": "~/assets/icons/openclassrooms.png",
   "label": "Développeur Typescript React",
   "start_date": "2022-04-01",
   "tasks": [

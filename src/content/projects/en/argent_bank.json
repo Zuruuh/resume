@@ -1,9 +1,9 @@
 {
   "title": "Argent Bank",
-  "description": "Web application with auth and server state syncing",
+  "description": "Web application with auth and server state synchronization",
   "tasks": [
     "Manage routes authorizations (public/private)",
-    "Server-state syncing w/ client-side caching using Redux",
+    "Server-state sync w/ client-side caching using Redux",
     "Optimistic state updates"
   ],
   "repository": "https://github.com/Zuruuh/argent-bank",

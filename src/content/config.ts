@@ -23,13 +23,15 @@ export const collections = {
   }),
   educations: defineCollection({
     type: 'data',
-    schema: z.object({
-      organization: z.string(),
-      label: z.string(),
-      start_date: z.coerce.date(),
-      end_date: z.coerce.date().optional(),
-      tasks: z.array(z.string()),
-    }),
+    schema: ({ image }) =>
+      z.object({
+        organization: z.string(),
+        logo: image(),
+        label: z.string(),
+        start_date: z.coerce.date(),
+        end_date: z.coerce.date().optional(),
+        tasks: z.array(z.string()),
+      }),
   }),
   experiences: defineCollection({
     type: 'data',

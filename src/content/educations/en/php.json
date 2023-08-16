@@ -1,5 +1,6 @@
 {
   "organization": "Openclassrooms",
+  "logo": "~/assets/icons/openclassrooms.png",
   "label": "Symfony developer",
   "start_date": "2021-03-01",
   "end_date": "2022-01-01",
