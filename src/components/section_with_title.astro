@@ -3,12 +3,13 @@ interface Props {
   title: string;
   id: string;
   withPadding?: boolean;
+  class?: string;
 }
 
-const { title, id, withPadding = true } = Astro.props;
+const { title, id, class: className, withPadding = true } = Astro.props;
 ---
 
-<section {id} class:list={[{ 'pt-4': withPadding }]}>
+<section {id} class:list={[{ 'pt-4': withPadding }, className]}>
   <h4 class="text-lg text-primary font-bold">{title}</h4>
   <slot />
 </section>

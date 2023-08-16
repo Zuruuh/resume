@@ -1,4 +1,10 @@
 ---
+interface Props {
+  showControls?: boolean;
+}
+const { showControls = true } = Astro.props;
+
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import { getLangFromUrl, useTranslations } from '~/i18n/utils';
 
@@ -52,10 +58,12 @@ export async function getStaticPaths() {
       <h1 class="text-4xl text-center">Younès Ziadi</h1>
       <h2 class="text-2xl text-center">{t('position')}</h2>
       <hr class="m-4" />
-      <img
-        src={ProfilePicture.src}
+
+      <Image
+        src={ProfilePicture}
         width={ProfilePicture.width}
         height={ProfilePicture.height}
+        loading="lazy"
         alt="Younès Ziadi"
         class="rounded-full"
       />
@@ -74,7 +82,7 @@ export async function getStaticPaths() {
         />
       </section>
 
-      <section id="skills">
+      <section id="skills" class="pb-4">
         <TextListWithIcons
           title={t('skills')}
           data={skills.map(({ data: skill }) => ({
@@ -86,7 +94,7 @@ export async function getStaticPaths() {
       </section>
     </aside>
 
-    <main class="p-2">
+    <main class="p-2 grid sm:grid-cols-2 items-baseline">
       <SectionWithTitle
         title={t('experiences')}
         id="experiences"
@@ -108,7 +116,11 @@ export async function getStaticPaths() {
         </ul>
       </SectionWithTitle>
 
-      <SectionWithTitle title={t('personnal_projects')} id="personnal-projects">
+      <SectionWithTitle
+        title={t('personnal_projects')}
+        id="personnal-projects"
+        class="sm:order-1"
+      >
         <ul>
           {
             projects.map(({ data: project }, i, { length }) => (
@@ -149,8 +161,8 @@ export async function getStaticPaths() {
               <li class:list={[{ ['pb-2']: i + 1 !== length }]}>
                 <div class="flex flex-col me-2">
                   <div class="flex">
-                    <img
-                      src={education.logo.src}
+                    <Image
+                      src={education.logo}
                       width={24}
                       height={24}
                       alt={education.organization}

@@ -1,0 +1,9 @@
+---
+import Page from './index.astro';
+
+export async function getStaticPaths() {
+  return [{ params: { lang: 'fr' } }, { params: { lang: 'en' } }];
+}
+---
+
+<Page showControls={false} />
