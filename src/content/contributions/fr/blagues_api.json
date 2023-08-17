@@ -5,7 +5,8 @@
   "pull_requests": [],
   "tasks": [
     "Création d'une librairie php pour intéragir avec l'api",
-    "Réutilisation un client http déjà installé sur le projet de l'utilisateur"
+    "Réutilisation un client http déjà installé sur le projet de l'utilisateur",
+    "Mise en place d'une pipeline d'intégration continue avec Github Actions"
   ],
   "stack": [
     {
@@ -27,6 +28,10 @@
     {
       "name": "Packagist",
       "icon": "~/assets/icons/packagist.svg"
+    },
+    {
+      "name": "Github Actions",
+      "icon": "~/assets/icons/github_actions.svg"
     }
   ]
 }

@@ -9,3 +9,4 @@
 - Combine experiences & projects blocks maybe?
 - Shrink skills & make them 2 columns
 - Button to download resume as pdf
+- Unlighthouse

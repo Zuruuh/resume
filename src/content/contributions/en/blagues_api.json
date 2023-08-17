@@ -5,7 +5,8 @@
   "pull_requests": [],
   "tasks": [
     "Create a wrapper for blagues api in php",
-    "Adapts to user's preferred http client to prevent bloating dependencies"
+    "Adapts to user's preferred http client to prevent bloating dependencies",
+    "Setup a continuous integration pipeline using Github Actions"
   ],
   "stack": [
     {
@@ -27,6 +28,10 @@
     {
       "name": "Packagist",
       "icon": "~/assets/icons/packagist.svg"
+    },
+    {
+      "name": "Github Actions",
+      "icon": "~/assets/icons/github_actions.svg"
     }
   ]
 }

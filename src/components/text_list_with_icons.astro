@@ -15,19 +15,27 @@ interface Props {
 const { title, data } = Astro.props;
 ---
 
-<h3 class="text-xl text-center uppercase font-semibold my-2">{title}</h3>
-<ul class="ps-4 sm:grid sm:grid-cols-2">
+<h3 class="text-xl uppercase font-semibold my-2">{title}</h3>
+<ul class="ps-4 sm:grid sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
   {
     data.map((entry) => (
       <li class="flex items-center pt-2">
-        <Image
-          src={entry.icon}
-          width={40}
-          height={40}
-          alt={entry.alt ?? entry.label}
-        />
+        <picture>
+          <source
+            media="(max-width:768px)"
+            srcset={entry.icon.src}
+            width="40px"
+            height="40px"
+          />
+          <img
+            src={entry.icon.src}
+            width="32px"
+            height="32px"
+            alt={entry.alt ?? entry.label}
+          />
+        </picture>
         {entry.link !== undefined ? (
-          <a href={entry.link} class="ps-2 text-lg">
+          <a href={entry.link} class="ps-2 text-lg md:text-sm">
             {entry.label}
           </a>
         ) : (

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://resume.zuruuh.vercel.app/sitemap-index.xml
