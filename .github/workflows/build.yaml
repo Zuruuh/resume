@@ -53,7 +53,7 @@ jobs:
 
           # see https://stackoverflow.com/questions/65497331/github-actions-is-it-possible-to-call-the-runner-host-from-a-docker-container
 
-          curl --request POST "http://localhost:3000/forms/chromium/convert/url" \
+          curl --silent --request POST "http://localhost:3000/forms/chromium/convert/url" \
             --form url="http://172.17.0.1:4321/fr/pure/index.html" \
             --form paperWidth=8.27 \
             --form paperHeight=11.7 \
@@ -64,7 +64,7 @@ jobs:
             --form scale=1.322 \
             -o resume.fr.pdf
 
-          curl --request POST "http://localhost:3000/forms/chromium/convert/url" \
+          curl --silent --request POST "http://localhost:3000/forms/chromium/convert/url" \
             --form url="http://172.17.0.1:4321/en/pure/index.html" \
             --form paperWidth=8.27 \
             --form paperHeight=11.7 \
@@ -78,8 +78,8 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          name: "untagged-$GITHUB_SHA"
-          tag_name: "untagged-$GITHUB_SHA"
+          name: "${{ GITHUB_SHA }}"
+          tag_name: "untagged-${{ GITHUB_SHA }}"
           token: ${{ secrets.GH_CREATE_RELEASE_TOKEN }}
           files: |
             resume.*.pdf
