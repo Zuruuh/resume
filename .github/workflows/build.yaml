@@ -31,7 +31,9 @@ jobs:
             ${{ runner.os }}-modules-
 
       - name: ➕ Install dependencies
-        run: bun install --frozen-lockfile
+        run: |
+          bun install --frozen-lockfile
+          bun panda codegen
 
       - name: 📦 Build static output
         run: bun run build
