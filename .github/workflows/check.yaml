@@ -6,7 +6,13 @@ on:
 jobs:
   release:
     runs-on: macos-14
-    environment: CI
+    env:
+      APP_PHONE_NUMBER: ${{ secrets.APP_PHONE_NUMBER }}
+      APP_LINKEDIN: ${{ secrets.APP_LINKEDIN }}
+      APP_FULLNAME: ${{ secrets.APP_FULLNAME }}
+      APP_EMAIL: ${{ secrets.APP_EMAIL }}
+      APP_URL: ${{ secrets.APP_URL }}
+
     strategy:
       fail-fast: false
 
