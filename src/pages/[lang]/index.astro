@@ -48,9 +48,18 @@ const educations = await getCollection('educations', filterByLang);
 export async function getStaticPaths() {
   return [{ params: { lang: 'fr' } }, { params: { lang: 'en' } }];
 }
+
+const viewStyles = css({
+  backgroundColor: 'gray',
+  marginX: 'auto',
+  width: '21cm', // width in centimeters of a standard A4 paper sheet
+});
 ---
 
-<html lang={lang} class={css({ overflowX: 'hidden' })}>
+<html
+  lang={lang}
+  class:list={[css({ overflowX: 'hidden' }), showControls ? viewStyles : '']}
+>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -58,6 +67,13 @@ export async function getStaticPaths() {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={t('short_description')} />
+    <meta name="og:type" content="website" />
+    <meta name="og:locale" content={lang} />
+    <meta
+      name="og:site_name"
+      content={`${t('title')} | ${import.meta.env.APP_FULLNAME}`}
+    />
+    <meta name="theme-color" content="#335384" />
     <title>{t('title')}</title>
   </head>
 
@@ -66,6 +82,7 @@ export async function getStaticPaths() {
       display: 'flex',
       flexDirection: 'row',
       height: 'screen',
+      backgroundColor: 'white',
     })}
   >
     {
