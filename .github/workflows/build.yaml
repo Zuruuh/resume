@@ -78,7 +78,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          name: $GITHUB_SHA
+          name: "untagged-$GITHUB_SHA"
           files: |
             resume.en.pdf
             resume.fr.pdf
