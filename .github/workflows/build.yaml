@@ -5,11 +5,12 @@ on:
 jobs:
   release:
     runs-on: ubuntu-22.04
+    environment: CI
     services:
       gotenberg:
         image: gotenberg/gotenberg:8.1.0
-        options: |
-          --network=host
+        # options: |
+          # --network=host
         ports:
           - "3000:3000"
 
@@ -43,8 +44,10 @@ jobs:
           bun run preview &
           sleep 5
 
+          # see https://stackoverflow.com/questions/65497331/github-actions-is-it-possible-to-call-the-runner-host-from-a-docker-container
+
           curl --request POST "http://localhost:3000/forms/chromium/convert/url" \
-            --form url="http://localhost:4321/fr/pure/index.html" \
+            --form url="http://172.17.0.1:4321/fr/pure/index.html" \
             --form paperWidth=8.27 \
             --form paperHeight=11.7 \
             --form marginTop=0.0 \
@@ -55,7 +58,7 @@ jobs:
             -o resume.fr.pdf
 
           curl --request POST "http://localhost:3000/forms/chromium/convert/url" \
-            --form url="http://localhost:4321/en/pure/index.html" \
+            --form url="http://172.17.0.1:4321/en/pure/index.html" \
             --form paperWidth=8.27 \
             --form paperHeight=11.7 \
             --form marginTop=0.0 \
