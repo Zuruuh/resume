@@ -103,9 +103,8 @@ const viewStyles = css({
           })}
         >
           <a
-            href={`https://github.com/Zuruuh/resume/releases/latest/download/resume.${lang}.pdf`}
-            download={t('filename')}
-            target="_blank"
+            href={`https://github.com/Zuruuh/resume/releases/latest/download/${lang === 'fr' ? import.meta.env.APP_RESUME_FR_FILENAME : import.meta.env.APP_RESUME_EN_FILENAME}.pdf`}
+            download
           >
             <img
               src={DownloadIcon.src}

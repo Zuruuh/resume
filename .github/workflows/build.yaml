@@ -16,8 +16,6 @@ jobs:
     services:
       gotenberg:
         image: gotenberg/gotenberg:8.1.0
-        # options: |
-          # --network=host
         ports:
           - "3000:3000"
 
@@ -62,7 +60,7 @@ jobs:
             --form marginLeft=0.0 \
             --form marginRight=0.0 \
             --form scale=1.322 \
-            -o resume.fr.pdf
+            -o "${{ secrets.APP_RESUME_FR_FILENAME }}"
 
           curl --silent --request POST "http://localhost:3000/forms/chromium/convert/url" \
             --form url="http://172.17.0.1:4321/en/pure/index.html" \
@@ -73,7 +71,7 @@ jobs:
             --form marginLeft=0.0 \
             --form marginRight=0.0 \
             --form scale=1.322 \
-            -o resume.en.pdf
+            -o "${{ secrets.APP_RESUME_EN_FILENAME }}"
 
       - name: Release
         uses: softprops/action-gh-release@v1
