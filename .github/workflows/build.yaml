@@ -45,6 +45,9 @@ jobs:
         run: bun run build
 
       - name: 📦 Build PDFs
+        env:
+          APP_RESUME_FR_FILENAME: ${{ secrets.APP_RESUME_FR_FILENAME }}
+          APP_RESUME_EN_FILENAME: ${{ secrets.APP_RESUME_EN_FILENAME }}
         run: |
           bun run preview &
           sleep 5
@@ -60,7 +63,7 @@ jobs:
             --form marginLeft=0.0 \
             --form marginRight=0.0 \
             --form scale=1.322 \
-            -o "${{ secrets.APP_RESUME_FR_FILENAME }}.pdf"
+            -o "${APP_RESUME_FR_FILENAME}.pdf"
 
           curl --silent --request POST "http://localhost:3000/forms/chromium/convert/url" \
             --form url="http://172.17.0.1:4321/en/pure/index.html" \
@@ -71,7 +74,7 @@ jobs:
             --form marginLeft=0.0 \
             --form marginRight=0.0 \
             --form scale=1.322 \
-            -o "${{ secrets.APP_RESUME_EN_FILENAME }}.pdf"
+            -o "${APP_RESUME_EN_FILENAME}.pdf"
 
       - name: Release
         uses: softprops/action-gh-release@v1
