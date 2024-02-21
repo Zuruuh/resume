@@ -54,7 +54,7 @@ jobs:
 
           # see https://stackoverflow.com/questions/65497331/github-actions-is-it-possible-to-call-the-runner-host-from-a-docker-container
 
-          curl --silent --request POST "http://localhost:3000/forms/chromium/convert/url" \
+          curl --request POST "http://localhost:3000/forms/chromium/convert/url" \
             --form url="http://172.17.0.1:4321/fr/pure/index.html" \
             --form paperWidth=8.27 \
             --form paperHeight=11.7 \
@@ -65,7 +65,7 @@ jobs:
             --form scale=1.322 \
             -o "${APP_RESUME_FR_FILENAME}.pdf"
 
-          curl --silent --request POST "http://localhost:3000/forms/chromium/convert/url" \
+          curl --request POST "http://localhost:3000/forms/chromium/convert/url" \
             --form url="http://172.17.0.1:4321/en/pure/index.html" \
             --form paperWidth=8.27 \
             --form paperHeight=11.7 \
