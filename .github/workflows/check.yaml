@@ -35,7 +35,8 @@ jobs:
 
       - name: ➕ Install dependencies
         run: |
-          bun install --frozen-lockfile
+          npm i # temporary because bun crashes randomly sometimes ?
+          # bun install --frozen-lockfile
           bun panda codegen
 
       - name: 🚨 Lint
