@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 const { APP_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), '');
+console.log(process.env);
 
 // https://astro.build/config
 export default defineConfig({
