@@ -4,6 +4,9 @@
     "baseUrl": ".",
     "paths": {
       "~/*": ["src/*"]
-    }
-  }
+    },
+    "plugins": [{ "name": "@astrojs/ts-plugin" }],
+    "verbatimModuleSyntax": true
+  },
+  "include": ["src", "styled-system"]
 }

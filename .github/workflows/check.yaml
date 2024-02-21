@@ -1,0 +1,39 @@
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: macos-14
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: 🛒 Checkout tag
+        uses: actions/checkout@v4
+
+      - name: ✨ Install bun
+        uses: oven-sh/setup-bun@v1.1.1
+        with:
+          bun-version: 1.0.28
+
+      - uses: actions/cache@v4
+        name: 📦 Setup deps cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: ➕ Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: 🚨 Lint
+        run: bun run lint
+
+      - name: 🚨 Type-check
+        run: bun astro check
+
+      - name: 🚨 Check build
+        run: bun run build

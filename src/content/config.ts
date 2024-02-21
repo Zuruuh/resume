@@ -58,7 +58,7 @@ export const collections = {
         stack: z.array(
           z.object({
             name: z.string(),
-            icon: image(),
+            icon: image().optional(),
           }),
         ),
       }),

@@ -11,11 +11,10 @@
       "icon": "~/assets/icons/rust.svg"
     },
     {
-      "name": "Serde JSON",
-      "icon": "~/assets/icons/serde.png"
+      "name": "serde"
     },
     {
-      "name": "Cargo Testing Api",
+      "name": "Cargo",
       "icon": "~/assets/icons/cargo.svg"
     }
   ]

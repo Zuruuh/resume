@@ -1,6 +1,6 @@
 ---
-import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { css } from '../../styled-system/css';
 
 interface Props {
   title: string;
@@ -15,11 +15,33 @@ interface Props {
 const { title, data } = Astro.props;
 ---
 
-<h3 class="text-xl uppercase font-semibold my-2">{title}</h3>
-<ul class="ps-4 sm:grid sm:grid-cols-2 md:grid-cols-1 xl:grid-cols-2">
+<h3
+  class={css({
+    textTransform: 'uppercase',
+    fontWeight: 'semibold',
+    marginTop: 2,
+    textAlign: 'center',
+  })}
+>
+  {title}
+</h3>
+<ul
+  class={css({
+    paddingLeft: 4,
+    display: 'flex',
+    flexDirection: 'column',
+  })}
+>
   {
     data.map((entry) => (
-      <li class="flex items-center pt-2">
+      <li class={css({ display: 'flex', alignItems: 'center', paddingTop: 4 })}>
+        <img
+          width="24px"
+          height="24px"
+          src={entry.icon.src}
+          alt={entry.alt ?? entry.label}
+        />
+        {/*
         <picture>
           <source
             media="(max-width:768px)"
@@ -34,12 +56,15 @@ const { title, data } = Astro.props;
             alt={entry.alt ?? entry.label}
           />
         </picture>
+        */}
         {entry.link !== undefined ? (
-          <a href={entry.link} class="ps-2 text-lg md:text-sm">
+          <a href={entry.link} class={css({ paddingLeft: 2, fontSize: 'sm' })}>
             {entry.label}
           </a>
         ) : (
-          <span class="ps-2 text-lg">{entry.label}</span>
+          <span class={css({ paddingLeft: 2, fontSize: 'lg' })}>
+            {entry.label}
+          </span>
         )}
       </li>
     ))

@@ -1,49 +1,88 @@
 ---
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import { css } from '../../styled-system/css';
 
 interface Props {
   stack: {
     name: string;
-    icon: ImageMetadata;
+    icon?: ImageMetadata | undefined;
   }[];
 }
 
 const { stack } = Astro.props;
 ---
 
-<ul class="flex gap-2 items-center">
+<ul class={css({ display: 'flex', gap: 1, alignItems: 'center' })}>
   {
-    stack.map((tool) => (
-      <li
-        data-tool={tool.name}
-        class:list={[
-          'w-[24px] h-[24px] ',
-          'relative',
-          'justify-center items-center flex',
-          'before:content-[attr(data-tool)]',
-          'before:absolute before:-top-full before:left-1/2 before:-translate-x-1/2',
-          'before:invisible hover:before:visible',
-          'before:text-sm before:rounded-md',
-          'before:w-max',
-          'before:bg-white',
-          'before:px-1 before:py-0.5',
-          'before:border-black before:border',
-          'after:absolute',
-          'after:invisible hover:after:visible',
-          'after:w-2 after:h-2',
-          'after:bg-white',
-          'after:rotate-45 after:bottom-3/4',
-          'after:border-b-black after:border-r-black after:border-r after:border-b',
-        ]}
-      >
-        <Image
-          src={tool.icon}
-          width={24}
-          height={24}
-          alt={`${tool.name} logo`}
-        />
-      </li>
-    ))
+    stack.map((tool) =>
+      tool.icon !== undefined ? (
+        <li
+          data-tool={tool.name}
+          class={css({
+            width: '16px',
+            height: '16px',
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+
+            _hover: {
+              _before: {
+                visibility: 'visible',
+              },
+              _after: {
+                visibility: 'visible',
+              },
+            },
+
+            _before: {
+              content: 'attr(data-tool)',
+              position: 'absolute',
+              top: '-150%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              visibility: 'hidden',
+              fontSize: 'xs',
+              rounded: 'md',
+              width: 'auto',
+              backgroundColor: 'white',
+              paddingX: 1,
+              paddingY: 0.5,
+              borderColor: 'black',
+              borderWidth: 1,
+              borderStyle: 'solid',
+              textWrap: 'nowrap',
+            },
+
+            _after: {
+              content: '""',
+              position: 'absolute',
+              visibility: 'hidden',
+              width: 2,
+              height: 2,
+              backgroundColor: 'white',
+              transform: 'rotate(45deg)',
+              bottom: '75%',
+              borderBottomColor: 'black',
+              borderRightColor: 'black',
+              borderBottomWidth: 1,
+              borderRightWidth: 1,
+              borderBottomStyle: 'solid',
+              borderRightStyle: 'solid',
+            },
+          })}
+        >
+          <Image
+            src={tool.icon}
+            width={16}
+            height={16}
+            alt={`${tool.name} logo`}
+          />
+        </li>
+      ) : (
+        <p class={css({ fontSize: 'xs', fontStyle: 'italic' })}>{tool.name}</p>
+      ),
+    )
   }
 </ul>

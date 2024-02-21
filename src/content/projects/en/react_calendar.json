@@ -1,15 +1,15 @@
 {
-  "title": "React date picker",
-  "description": "Une librairie de date-picker headless, compatible avec React & React native",
+  "title": "React Calendar",
+  "description": "A headless calendar library for React & React native",
   "tasks": [
-    "Gère la génération des calendriers",
-    "Couvre la majorité des cas d'usages",
-    "Délègues toute la partie présentation au développeur"
+    "Handle calendar generation logic",
+    "Covers most use-cases",
+    "Keeps the developer in control of their presentation layer"
   ],
-  "repository": "https://github.com/Zuruuh/react-date-picker",
+  "repository": "https://github.com/Zuruuh/react-calendar",
   "link": {
-    "type": "web",
-    "url": "https://www.npmjs.com/package/@zuruuh/react-date-picker"
+    "type": "npm",
+    "url": "https://www.npmjs.com/package/@zuruuh/react-calendar"
   },
   "stack": [
     {
@@ -31,6 +31,10 @@
     {
       "name": "Vitest",
       "icon": "~/assets/icons/vitest.svg"
+    },
+    {
+      "name": "NPMJS",
+      "icon": "~/assets/icons/npm.svg"
     },
     {
       "name": "Github Actions",

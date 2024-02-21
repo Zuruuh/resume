@@ -1,15 +1,18 @@
 ---
+import { css } from '../../styled-system/css';
+
 interface Props {
   title: string;
   id: string;
-  withPadding?: boolean;
   class?: string;
 }
 
-const { title, id, class: className, withPadding = true } = Astro.props;
+const { title, id, class: className } = Astro.props;
 ---
 
-<section {id} class:list={[{ 'pt-4': withPadding }, className]}>
-  <h4 class="text-lg text-primary font-bold">{title}</h4>
+<section {id} class={className}>
+  <h4 class={css({ fontSize: 'lg', color: 'primary', fontWeight: 'bold' })}>
+    {title}
+  </h4>
   <slot />
 </section>

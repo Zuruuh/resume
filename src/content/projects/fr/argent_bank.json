@@ -4,12 +4,12 @@
   "tasks": [
     "Gestion de la sécurité des routes (publiques/privées)",
     "Synchronisation de l'état serveur avec le client et mise en cache des résultats avec Redux",
-    "Mises à jour optimistes de l'état"
+    "Mises à jour du state de l'app en \"optimistic\""
   ],
   "repository": "https://github.com/Zuruuh/argent-bank",
   "link": {
     "type": "web",
-    "url": "https://argent-bank.zuruuh.vercel.app"
+    "url": "https://argent-bank.zuruh.dev"
   },
   "stack": [
     {

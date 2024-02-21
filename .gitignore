@@ -20,6 +20,8 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
-/src/assets/images/profile_picture.jpeg
-/public/robots.txt
 /.unlighthouse
+
+## Panda
+styled-system
+styled-system-studio

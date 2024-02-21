@@ -1,0 +1,72 @@
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: macos-14
+    services:
+      gotenberg:
+        image: gotenberg/gotenberg:8.1.0
+        options: |
+          --network=host
+        ports:
+          - "3000:3000"
+
+    steps:
+      - name: 🛒 Checkout tag
+        uses: actions/checkout@v4
+
+      - name: ✨ Install bun
+        uses: oven-sh/setup-bun@v1.1.1
+        with:
+          bun-version: 1.0.28
+
+      - uses: actions/cache@v4
+        name: 📦 Setup deps cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+
+      - name: ➕ Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: 📦 Build static output
+        run: bun run build
+
+      - name: 📦 Build PDFs
+        run: |
+          bun run preview &
+          sleep 5
+
+          curl --request POST "http://localhost:3000/forms/chromium/convert/url" \
+            --form url="http://localhost:4321/fr/pure/index.html" \
+            --form paperWidth=8.27 \
+            --form paperHeight=11.7 \
+            --form marginTop=0.0 \
+            --form marginBottom=0.0 \
+            --form marginLeft=0.0 \
+            --form marginRight=0.0 \
+            --form scale=1.322 \
+            -o resume.fr.pdf
+
+          curl --request POST "http://localhost:3000/forms/chromium/convert/url" \
+            --form url="http://localhost:4321/en/pure/index.html" \
+            --form paperWidth=8.27 \
+            --form paperHeight=11.7 \
+            --form marginTop=0.0 \
+            --form marginBottom=0.0 \
+            --form marginLeft=0.0 \
+            --form marginRight=0.0 \
+            --form scale=1.322 \
+            -o resume.en.pdf
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: $GITHUB_SHA
+          files: |
+            resume.en.pdf
+            resume.fr.pdf

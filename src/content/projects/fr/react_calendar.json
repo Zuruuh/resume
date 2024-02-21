@@ -1,0 +1,40 @@
+{
+  "title": "React Calendar",
+  "description": "Une librairie de calendrier headless, compatible avec React & React native",
+  "tasks": [
+    "Couvre la majorité des cas d'usages avec un système de plugin",
+    "Documentation poussée avec Vitepress",
+    "Délègues toute la partie présentation au développeur"
+  ],
+  "repository": "https://github.com/Zuruuh/react-calendar",
+  "link": {
+    "type": "web",
+    "url": "https://www.npmjs.com/package/@zuruuh/react-calendar"
+  },
+  "stack": [
+    {
+      "name": "React",
+      "icon": "~/assets/icons/react.svg"
+    },
+    {
+      "name": "Typescript",
+      "icon": "~/assets/icons/typescript.svg"
+    },
+    {
+      "name": "Vite",
+      "icon": "~/assets/icons/vite.svg"
+    },
+    {
+      "name": "Storybook",
+      "icon": "~/assets/icons/storybook.svg"
+    },
+    {
+      "name": "Vitepress",
+      "icon": "~/assets/icons/vitepress.svg"
+    },
+    {
+      "name": "Github Actions",
+      "icon": "~/assets/icons/github_actions.svg"
+    }
+  ]
+}

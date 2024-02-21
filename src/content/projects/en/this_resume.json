@@ -8,7 +8,7 @@
   "repository": "https://github.com/Zuruuh/resume",
   "link": {
     "type": "web",
-    "url": "https://resume.zuruuh.vercel.app"
+    "url": "https://resume.zuruh.dev"
   },
   "stack": [
     {
@@ -20,8 +20,8 @@
       "icon": "~/assets/icons/typescript.svg"
     },
     {
-      "name": "TailwindCSS",
-      "icon": "~/assets/icons/tailwind.svg"
+      "name": "PandaCSS",
+      "icon": "~/assets/icons/pandacss.svg"
     },
     {
       "name": "Github Actions",

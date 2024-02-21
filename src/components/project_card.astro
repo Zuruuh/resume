@@ -4,6 +4,7 @@ import GithubIcon from '~/assets/icons/github.svg';
 import TechStackList from './tech_stack_list.astro';
 import TaskList from './task_list.astro';
 import type { ImageMetadata } from 'astro';
+import { css } from '../../styled-system/css';
 
 interface Props {
   title: string;
@@ -12,26 +13,38 @@ interface Props {
   job?: string;
   stack: {
     name: string;
-    icon: ImageMetadata;
+    icon?: ImageMetadata | undefined;
   }[];
   tasks: string[];
 }
 
-const { repository, title, stack = [], tasks = [] } = Astro.props;
+const { repository, title, stack = [], tasks = [], logo } = Astro.props;
 ---
 
-<div class="flex items-center flex-wrap">
+<div class={css({ display: 'flex', alignItems: 'center', flexWrap: 'wrap' })}>
   {
     repository === undefined ? (
-      <span class="flex items-center me-2">{title}</span>
+      <span
+        class={css({ display: 'flex', alignItems: 'center', marginRight: 2 })}
+      >
+        {logo === undefined ? (
+          <> </>
+        ) : (
+          <Image src={logo} width={20} height={20} alt={title} />
+        )}
+        {title}
+      </span>
     ) : (
-      <a href={repository} class="flex items-center me-2">
+      <a
+        href={repository}
+        class={css({ display: 'flex', alignItems: 'center', marginRight: 2 })}
+      >
         <Image
           src={GithubIcon}
-          width={24}
-          height={24}
+          width={20}
+          height={20}
           alt="Github"
-          class="me-1"
+          class={css({ marginRight: 1 })}
         />
         {title}
       </a>

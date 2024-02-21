@@ -1,4 +1,6 @@
 ---
+import { css } from '../../styled-system/css';
+
 interface Props {
   tasks: string[];
 }
@@ -7,5 +9,11 @@ const { tasks } = Astro.props;
 ---
 
 <ul>
-  {tasks.map((task) => <li class="text-sm text-text-secondary">- {task}</li>)}
+  {
+    tasks.map((task) => (
+      <li class={css({ fontSize: '0.65rem', color: 'text-secondary' })}>
+        - {task}
+      </li>
+    ))
+  }
 </ul>
