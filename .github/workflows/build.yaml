@@ -79,6 +79,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           name: "untagged-$GITHUB_SHA"
+          tag_name: "untagged-$GITHUB_SHA"
+          token: ${{ secrets.GH_CREATE_RELEASE_TOKEN }}
           files: |
-            resume.en.pdf
-            resume.fr.pdf
+            resume.*.pdf
