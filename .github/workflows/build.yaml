@@ -80,4 +80,5 @@ jobs:
           tag_name: "untagged-${{ github.sha }}"
           token: ${{ secrets.GH_CREATE_RELEASE_TOKEN }}
           files: |
-            resume.*.pdf
+            "${{ secrets.APP_RESUME_EN_FILENAME }}"
+            "${{ secrets.APP_RESUME_FR_FILENAME }}"
