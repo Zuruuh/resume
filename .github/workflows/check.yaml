@@ -5,7 +5,7 @@ on:
 
 jobs:
   release:
-    runs-on: macos-14
+    runs-on: ubuntu-22.04
     env:
       APP_PHONE_NUMBER: ${{ secrets.APP_PHONE_NUMBER }}
       APP_LINKEDIN: ${{ secrets.APP_LINKEDIN }}
