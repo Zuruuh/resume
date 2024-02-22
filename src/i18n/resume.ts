@@ -18,7 +18,7 @@ export const resume = {
     tech_stack: 'Tech stack',
     opensource: 'Opensource contributions',
     short_description:
-      '19 years old web developer; I like docker and open source',
+      '19 years old web developer; I like docker, php, and open source',
     cta_download: 'Download as PDF',
     switch_lang: 'Lire en français',
   },
@@ -34,7 +34,7 @@ export const resume = {
     tech_stack: 'Stack technique',
     opensource: 'Contributions opensource',
     short_description:
-      "Développeur web de 19 ans; Apprécie docker et l'open source",
+      "Développeur web de 19 ans; Apprécie docker, php, et l'open source",
     cta_download: 'Télécharger en PDF',
     switch_lang: 'Read in english',
   },
