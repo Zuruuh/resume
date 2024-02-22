@@ -56,7 +56,7 @@ jobs:
 
           container=$(docker ps --format {{.ID}})
           echo $container
-          docker exec "$container" curl http://127.17.0.1:4321/fr/pure/index.html
+          docker exec "$container" curl http://172.17.0.1:4321/fr/pure/index.html
 
           curl --request POST "http://localhost:3000/forms/chromium/convert/url" \
             --form url="http://172.17.0.1:4321/fr/pure/index.html" \
