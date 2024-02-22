@@ -81,7 +81,11 @@ const { stack } = Astro.props;
           />
         </li>
       ) : (
-        <p class={css({ fontSize: 'xs', fontStyle: 'italic' })}>{tool.name}</p>
+        <li>
+          <p class={css({ fontSize: 'xs', fontStyle: 'italic' })}>
+            {tool.name}
+          </p>
+        </li>
       ),
     )
   }

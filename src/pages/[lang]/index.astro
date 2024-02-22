@@ -110,7 +110,6 @@ const viewStyles = css({
               src={DownloadIcon.src}
               width={16}
               height={16}
-              loading="lazy"
               alt={t('cta_download')}
             />
           </a>
@@ -120,7 +119,6 @@ const viewStyles = css({
                 src={UsaFlagIcon.src}
                 width={16}
                 height={16}
-                loading="lazy"
                 alt={t('switch_lang')}
               />
             ) : (
@@ -128,7 +126,6 @@ const viewStyles = css({
                 src={FranceFlagIcon.src}
                 width={16}
                 height={16}
-                loading="lazy"
                 alt={t('switch_lang')}
               />
             )}
@@ -159,10 +156,10 @@ const viewStyles = css({
 
       <hr class={css({ margin: 4 })} />
 
-      <img
-        src={ProfilePicture.src}
-        loading="lazy"
+      <Image
+        src={ProfilePicture}
         alt={import.meta.env.APP_FULLNAME}
+        loading="lazy"
         width={170}
         height={170}
         class={css({
