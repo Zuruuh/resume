@@ -79,6 +79,7 @@ const { stack } = Astro.props;
             height={16}
             alt={`${tool.name} logo`}
           />
+          <p class={css({ visibility: 'hidden' })}>{tool.name}</p>
         </li>
       ) : (
         <li>
