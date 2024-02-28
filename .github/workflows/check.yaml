@@ -35,7 +35,7 @@ jobs:
 
       - name: ➕ Install dependencies
         run: |
-          bun install --frozen-lockfile
+          bun install
           bun panda codegen
 
       - name: 🚨 Lint
