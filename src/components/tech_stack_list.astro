@@ -20,8 +20,8 @@ const { stack } = Astro.props;
         <li
           data-tool={tool.name}
           class={css({
-            width: '16px',
-            height: '16px',
+            width: '20px',
+            height: '20px',
             position: 'relative',
             display: 'flex',
             justifyContent: 'center',
@@ -39,7 +39,7 @@ const { stack } = Astro.props;
             _before: {
               content: 'attr(data-tool)',
               position: 'absolute',
-              top: '-150%',
+              top: '-110%',
               left: '50%',
               transform: 'translateX(-50%)',
               visibility: 'hidden',
@@ -75,8 +75,8 @@ const { stack } = Astro.props;
         >
           <Image
             src={tool.icon}
-            width={16}
-            height={16}
+            width={20}
+            height={20}
             alt={`${tool.name} logo`}
           />
           <span class={css({ visibility: 'hidden', width: '0' })}>
