@@ -11,9 +11,7 @@ const { tasks } = Astro.props;
 <ul>
   {
     tasks.map((task) => (
-      <li class={css({ fontSize: '0.65rem', color: 'text-secondary' })}>
-        - {task}
-      </li>
+      <li class={css({ fontSize: 'sm', color: 'text-secondary' })}>- {task}</li>
     ))
   }
 </ul>

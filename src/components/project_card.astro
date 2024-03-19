@@ -30,7 +30,7 @@ const { repository, title, stack = [], tasks = [], logo } = Astro.props;
         {logo === undefined ? (
           <> </>
         ) : (
-          <Image src={logo} width={20} height={20} alt={title} />
+          <Image src={logo} width={24} height={24} alt={title} />
         )}
         {title}
       </span>
@@ -41,12 +41,12 @@ const { repository, title, stack = [], tasks = [], logo } = Astro.props;
       >
         <Image
           src={GithubIcon}
-          width={20}
-          height={20}
+          width={24}
+          height={24}
           alt="Github"
-          class={css({ marginRight: 1 })}
+          class={css({ marginRight: 2 })}
         />
-        {title}
+        <span class={css({ fontSize: 'lg' })}>{title}</span>
       </a>
     )
   }

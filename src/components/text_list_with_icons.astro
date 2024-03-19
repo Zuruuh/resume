@@ -36,29 +36,14 @@ const { title, data } = Astro.props;
     data.map((entry) => (
       <li class={css({ display: 'flex', alignItems: 'center', paddingTop: 4 })}>
         <img
-          width="24px"
-          height="24px"
+          width="32px"
+          height="32px"
           src={entry.icon.src}
           alt={entry.alt ?? entry.label}
         />
-        {/*
-        <picture>
-          <source
-            media="(max-width:768px)"
-            srcset={entry.icon.src}
-            width="40px"
-            height="40px"
-          />
-          <img
-            src={entry.icon.src}
-            width="32px"
-            height="32px"
-            alt={entry.alt ?? entry.label}
-          />
-        </picture>
-        */}
+
         {entry.link !== undefined ? (
-          <a href={entry.link} class={css({ paddingLeft: 2, fontSize: 'sm' })}>
+          <a href={entry.link} class={css({ paddingLeft: 2 })}>
             {entry.label}
           </a>
         ) : (

@@ -62,7 +62,6 @@ jobs:
             --form marginBottom=0.0 \
             --form marginLeft=0.0 \
             --form marginRight=0.0 \
-            --form scale=1.322 \
             -o "${APP_RESUME_FR_FILENAME}.pdf"
 
           curl --request POST "http://localhost:3000/forms/chromium/convert/url" \
@@ -73,7 +72,6 @@ jobs:
             --form marginBottom=0.0 \
             --form marginLeft=0.0 \
             --form marginRight=0.0 \
-            --form scale=1.322 \
             -o "${APP_RESUME_EN_FILENAME}.pdf"
 
       - name: Release

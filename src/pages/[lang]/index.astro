@@ -108,8 +108,8 @@ const viewStyles = css({
           >
             <img
               src={DownloadIcon.src}
-              width={16}
-              height={16}
+              width={24}
+              height={24}
               alt={t('cta_download')}
             />
           </a>
@@ -117,15 +117,15 @@ const viewStyles = css({
             {lang === 'fr' ? (
               <img
                 src={UsaFlagIcon.src}
-                width={16}
-                height={16}
+                width={24}
+                height={24}
                 alt={t('switch_lang')}
               />
             ) : (
               <img
                 src={FranceFlagIcon.src}
-                width={16}
-                height={16}
+                width={24}
+                height={24}
                 alt={t('switch_lang')}
               />
             )}
@@ -147,10 +147,10 @@ const viewStyles = css({
         justifyContent: 'start',
       })}
     >
-      <h1 class={css({ fontSize: '3xl', textAlign: 'center' })}>
+      <h1 class={css({ fontSize: '4xl', textAlign: 'center' })}>
         {import.meta.env.APP_FULLNAME}
       </h1>
-      <h2 class={css({ fontSize: 'xl', textAlign: 'center' })}>
+      <h2 class={css({ fontSize: '2xl', textAlign: 'center' })}>
         {t('position')}
       </h2>
 
@@ -160,8 +160,8 @@ const viewStyles = css({
         src={ProfilePicture}
         alt={import.meta.env.APP_FULLNAME}
         loading="lazy"
-        width={170}
-        height={170}
+        width={200}
+        height={200}
         class={css({
           rounded: 'full',
           marginX: 'auto',
