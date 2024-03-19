@@ -4,7 +4,7 @@ on:
     branches: [main]
 
 jobs:
-  release:
+  check:
     runs-on: ubuntu-22.04
     env:
       APP_PHONE_NUMBER: ${{ secrets.APP_PHONE_NUMBER }}
@@ -23,7 +23,7 @@ jobs:
       - name: ✨ Install bun
         uses: oven-sh/setup-bun@v1.1.1
         with:
-          bun-version: 1.0.29
+          bun-version: 1.0.33
 
       - uses: actions/cache@v4
         name: 📦 Setup deps cache
